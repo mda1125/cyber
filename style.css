@@ -1,18 +1,156 @@
+/* General Styles */
 body {
-    background-color: #f0f0f0; /* Light grey background */
-    font-family: Arial, sans-serif; /* Easy-to-read sans-serif font */
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Ensure body takes full viewport height */
+    background-color: #f0f8ff; /* Light Alice Blue background */
+    color: #333;
 }
 
 .container {
-    text-align: center; /* Center the text inside the container */
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 0 20px;
+    overflow: hidden; /* Clear floats */
+}
+
+h1, h2 {
+    font-family: 'Pacifico', cursive; /* Quirky font for headings */
+    color: #ff6347; /* Tomato color */
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 h1 {
-    color: #333; /* Dark grey text for better readability */
+    font-size: 3em;
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 2em;
+    margin-top: 30px;
+    border-bottom: 2px dashed #ff6347; /* Dashed underline */
+    padding-bottom: 5px;
+}
+
+p {
+    margin-bottom: 15px;
+    text-align: center; /* Center align paragraphs */
+}
+
+a {
+    color: #1e90ff; /* Dodger Blue links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Header */
+header {
+    background-color: #add8e6; /* Light Blue */
+    padding: 20px 0;
+    border-bottom: 5px solid #87ceeb; /* Sky Blue border */
+}
+
+/* Sections */
+section {
+    background-color: #fff;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+/* Image Gallery */
+#gallery .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 15px; /* Space between images */
+    margin-top: 15px;
+}
+
+#gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Rounded image corners */
+    border: 3px solid #ffb6c1; /* Light Pink border */
+    transition: transform 0.3s ease; /* Smooth zoom effect */
+}
+
+#gallery img:hover {
+    transform: scale(1.05); /* Zoom in on hover */
+}
+
+/* TikTok Badge */
+#social {
+    text-align: center;
+}
+
+.tiktok-badge {
+    display: inline-block;
+    background-color: #000; /* TikTok black */
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 25px; /* Pill shape */
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.tiktok-badge i {
+    margin-right: 8px;
+    font-size: 1.3em; /* Slightly larger icon */
+    vertical-align: middle;
+}
+
+.tiktok-badge:hover {
+    background-color: #fe2c55; /* TikTok red on hover */
+    text-decoration: none;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #add8e6; /* Light Blue */
+    color: #555;
+    font-size: 0.9em;
+    border-top: 3px solid #87ceeb; /* Sky Blue border */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    .container {
+        padding: 0 15px;
+    }
+    #gallery .image-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust grid for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+    .tiktok-badge {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    #gallery .image-grid {
+        grid-template-columns: 1fr; /* Stack images on very small screens */
+    }
 }
