@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zing's Journal</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Link to the main stylesheet -->
+    <style>
+        /* Basic styling for blog entries */
+        .blog-entry {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .blog-entry img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+        .blog-entry h2 {
+            margin-top: 0;
+        }
+         .blog-entry .date {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Zing's Journal</h1>
+        <nav>
+            <a href="../index.html">Home</a> <!-- Link back to the main homepage -->
+        </nav>
+    </header>
+
+    <main id="blog-entries">
+        <!-- Blog entries will be loaded here -->
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Cybernetic Creations</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('entries.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(entries => {
+                    const container = document.getElementById('blog-entries');
+                    if (!container) {
+                        console.error('Error: Blog entries container not found!');
+                        return;
+                    }
+                    if (entries.length === 0) {
+                        container.innerHTML = '<p>No journal entries yet. Check back soon!</p>';
+                        return;
+                    }
+
+                    entries.sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort entries by date, newest first
+
+                    entries.forEach(entry => {
+                        const entryDiv = document.createElement('div');
+                        entryDiv.classList.add('blog-entry');
+
+                        const dateP = document.createElement('p');
+                        dateP.classList.add('date');
+                        dateP.textContent = new Date(entry.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+                        const titleH2 = document.createElement('h2');
+                        titleH2.textContent = entry.title;
+
+                        const contentP = document.createElement('p');
+                        contentP.textContent = entry.content; // Using textContent for security
+
+                        entryDiv.appendChild(dateP);
+                        entryDiv.appendChild(titleH2);
+                        entryDiv.appendChild(contentP);
+
+                        if (entry.image) {
+                            const img = document.createElement('img');
+                            img.src = entry.image;
+                            img.alt = entry.title; // Use title as alt text
+                            entryDiv.appendChild(img);
+                        }
+
+                        container.appendChild(entryDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching or parsing blog entries:', error);
+                    const container = document.getElementById('blog-entries');
+                    if (container) {
+                        container.innerHTML = '<p>Could not load journal entries. Please try again later.</p>';
+                    }
+                });
+        });
+    </script>
+</body>
+</html>

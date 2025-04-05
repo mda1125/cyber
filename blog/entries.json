@@ -1,0 +1,14 @@
+[
+  {
+    "date": "2025-04-04",
+    "title": "First Entry!",
+    "content": "Welcome to Zing's Journal! This is the first entry. More thoughts and adventures to come.",
+    "image": null
+  },
+  {
+    "date": "2025-04-05",
+    "title": "Observing Hummingbirds",
+    "content": "Spent the morning watching hummingbirds in the garden. Their speed and agility are incredible. Managed to snap a few pictures!",
+    "image": "../gallery/hummingbird1.png"
+  }
+]
