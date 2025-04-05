@@ -14,9 +14,13 @@
             margin-bottom: 20px;
         }
         .blog-entry img {
-            max-width: 100%;
-            height: auto;
+            max-width: 640px; /* Set max width */
+            width: 100%; /* Allow shrinking below max-width */
+            height: auto; /* Maintain aspect ratio */
             margin-top: 10px;
+            display: block; /* Ensure it behaves like a block element */
+            margin-left: auto; /* Optional: center the image if smaller than max-width */
+            margin-right: auto; /* Optional: center the image if smaller than max-width */
         }
         .blog-entry h2 {
             margin-top: 0;
